@@ -20,12 +20,26 @@
         <section>
             <div id="tagline">Upload a zipped shapefile or geopackage to validate it for submission</div>
         </section>
+        
        
     </header>
-    <div id="form-container">
-        <form >
-            <input type="file"/>
-        </form>
+    
+    <div id="container">
+        <div id="form-container">
+            <form id="form">
+                <input type="file"/>
+            </form>
+        </div>
+        <section id="explainer">
+            <div id="text">What we check for:</div>
+            <ul id="list">
+                <li>File naming</li>
+                <li>Layers have attributes</li>
+                <li>Projection</li>
+                <li>Geometry errors</li>
+                <li>Topology errors</li>
+            </ul>
+        </section>
     </div>
 </body>
 </html>

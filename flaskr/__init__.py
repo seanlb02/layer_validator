@@ -24,7 +24,7 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
-    @app.route('/hello')
+    @app.route('/')
     def hello():
         full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGCLOGO.png')
         return render_template('home.html', logo = full_filename)
