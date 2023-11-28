@@ -27,6 +27,7 @@ def create_app(test_config=None):
     @app.route('/')
     def hello():
         full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGCLOGO.png')
-        return render_template('home.html', logo = full_filename)
+        flav = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGC_AGREEMENT_LOGO-01.jpg')
+        return render_template('home.html', logo = full_filename, flavicon = flav)
 
     return app
