@@ -1,0 +1,54 @@
+body{
+    box-sizing: border-box;
+    margin:0;
+
+}
+
+#hero{
+    display:flex;
+    width:100vw;
+    height:300px;
+    color:black;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border:solid;
+    border-color:black;
+
+    
+}
+#logo{
+    background-image: url("../assets/MCG_C_Logo_BW_VerJ.png");
+    height:250px;
+    width:1000px;
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+
+header{
+    width: 100vw;
+    gap:2rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#title {
+    color:red;
+    font-family: 'Space Grotesk', sans-serif;
+    text-align: center;
+    font-size: xx-large
+}
+
+#tagline {
+    text-align:center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size:
+}
+
+#form-container{
+    display:flex;
+    justify-content: center;
+    width:100vw;
+    margin-top:2rem;
+}
