@@ -7,7 +7,8 @@ from flask import render_template
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
-  
+    IMAGE_FOLDER = os.path.join('static')
+    app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -25,6 +26,7 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/hello')
     def hello():
-        return render_template('home.html')
+        full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGCLOGO.png')
+        return render_template('home.html', logo = full_filename)
 
     return app

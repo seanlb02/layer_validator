@@ -12,8 +12,7 @@ body{
     text-align: center;
     justify-content: center;
     align-items: center;
-    border:solid;
-    border-color:black;
+  
 
     
 }
@@ -34,7 +33,7 @@ header{
 }
 
 #title {
-    color:red;
+    
     font-family: 'Space Grotesk', sans-serif;
     text-align: center;
     font-size: xx-large
