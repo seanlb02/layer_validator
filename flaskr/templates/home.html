@@ -19,7 +19,7 @@
             <div id="title">Spatial File Validator</div>
         </section>
         <section>
-            <div id="tagline">Upload a zipped <u>shapefile</u> or <u>geopackage</u> to validate it for submission</div>
+            <div id="tagline">Upload a <u>zipped</u> shapefile to validate it for submission</div>
         </section>
         
        
@@ -27,8 +27,9 @@
     
     <div id="container">
         <div id="form-container">
-            <form id="form">
-                <input type="file"/>
+            <form id="formm" action="{{ url_for('upload_file') }}" method="POST" enctype=multipart/form-data>
+                <input type="file" accept="application/zip" name="data_zip_file" required/>
+                <button type="submit">Validate</button>
             </form>
         </div>
         <section id="explainer">
