@@ -36,10 +36,15 @@ def create_app(test_config=None):
         full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGCLOGO.png')
         if request.method == 'POST':
             # retrieve the file sent via post request (input name is data_zip_file)
-            file = request.form['data_zip_file']
+            file = request.files['data_zip_file']
             file_like_object = file.stream._file  
             zipfile_ob = zipfile.ZipFile(file_like_object)
-            print(file_names = zipfile_ob.namelist())
-        flav = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGC_AGREEMENT_LOGO-01.jpg')
-        return render_template('home.html', logo = full_filename, flavicon = flav)
+            file_names = zipfile_ob.namelist()
+            file_names = [file_name for file_name in file_names if file_name.endswith(".shp")]
+            files = [(zipfile_ob.open(name).read(),name) for name in file_names]
+            return str(files)
+            print(file_names)
+        if request.method == 'GET':
+            flav = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGC_AGREEMENT_LOGO-01.jpg')
+            return render_template('home.html', logo = full_filename, flavicon = flav)
     return app
