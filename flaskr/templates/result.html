@@ -27,25 +27,26 @@
     
     <div id="container">
         <div id="form-container">
-                <a href="/"><button type="submit">Validate new file</button></a>
+                <a href="/"><button type="submit">Validate another file</button></a>
         </div>
         <section id="table">
             <table>
                 <tr>
-                    <th>Geometry type</th>
                     <th>Layer name</th>
+                    <th>Geometry type</th>
                     <th>Projection</th>
-                    <th>Corrupt layer?</th>
-                    <th>Geometry Error?</th>
-                    <th>Overlap?</th>
-
+                    <th>Corrupt layer</th>
+                    <th>Attributes</th>
+                    <th>Geometry Error</th>
+                    <th>Overlap</th>
                 </tr>
                 
                 <tr>
-                    <td>{{geometry}}</td>
                     <td>{{layer_name}}</td>
+                    <td>{{geometry}}</td>
                     <td>{{projection}}</td>
                     <td>{{corrupt}}</td>
+                    <td>{{attributes}}</td>
                     <td>{{geo_err}}</td>
                     <td>{{overlap}}</td>
                 </tr>
