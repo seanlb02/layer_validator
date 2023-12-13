@@ -16,6 +16,17 @@ body{
 
     
 }
+
+table, th, td {
+    border: solid;
+    border-collapse: collapse;
+
+}
+
+th, td {
+    padding: 10px;
+}
+
 #logo{
     background-image: url("../assets/MCG_C_Logo_BW_VerJ.png");
     height:250px;
@@ -30,6 +41,9 @@ header{
     display:flex;
     flex-direction: column;
     justify-content: center;
+}
+#table {
+    margin-top: 5%;
 }
 
 #title {
