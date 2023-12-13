@@ -28,7 +28,7 @@
     <div id="container">
         <div id="form-container">
             <form id="form" action="{{ url_for('upload_file') }}" method="POST" enctype=multipart/form-data>
-                <input type="file" accept="application/zip" name="data_zip_file" required/>
+                <input type="file" accept="application/zip" name="data_zip_file" />
                 <button type="submit">Validate</button>
             </form>
         </div>
