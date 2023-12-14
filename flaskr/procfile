@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:3000 wsgi:flaskr
+web: gunicorn gunicorn -w '__init__.py:create_app()'
