@@ -1,15 +1,8 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "/__init__.py",
-            "use": "@vercel/python"
+    "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
+    "functions": {
+        "api/**/*": {
+          "excludeFiles": "{.html. .png, .jpg}" 
         }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/__init__.py"
-        }
-    ]
-}
+      }
+  }
