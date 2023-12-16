@@ -62,14 +62,15 @@ def create_app(test_config=None):
                 warning = ""
                 # retrieve the file sent via post request (the 'input' element name is data_zip_file)
                 file = request.files['data_zip_file']
-                file_like_object = file.stream._file  
-                data = file_like_object.getvalue()
-                zipfile_ob = zipfile.ZipFile(file_like_object)
-                file_names = zipfile_ob.namelist()
+                
 
 
                 # Sanitize first input (.zip)
                 if file and file.filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS:
+                    file_like_object = file.stream._file  
+                    data = file_like_object.getvalue()
+                    zipfile_ob = zipfile.ZipFile(file_like_object)
+                    file_names = zipfile_ob.namelist()
                     # Sanitize files WITHIN the zip folder
                     for item in file_names: 
                         if item.rsplit('.', 1)[1].lower() not in ALLOWED_EXTENSIONS:
