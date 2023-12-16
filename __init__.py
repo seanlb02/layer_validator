@@ -68,7 +68,7 @@ def create_app(test_config=None):
                 # Sanitize first input (.zip)
                 if file and file.filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS:
                     file_like_object = file.stream._file  
-                    data = file_like_object.getvalue()
+                    data = file_like_object.read()
                     zipfile_ob = zipfile.ZipFile(file_like_object)
                     file_names = zipfile_ob.namelist()
                     # Sanitize files WITHIN the zip folder
