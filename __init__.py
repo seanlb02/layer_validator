@@ -73,11 +73,14 @@ def create_app(test_config=None):
                     file_names = zipfile_ob.namelist()
                     # Sanitize files WITHIN the zip folder
                     for item in file_names: 
-                        if item.rsplit('.', 1)[1].lower() not in ALLOWED_EXTENSIONS:
-                            raise fiona.errors.DriverError
+                        try:
+                            if item.rsplit('.', 1)[1].lower() not in ALLOWED_EXTENSIONS:
+                                raise fiona.errors.DriverError
+                        except:
+                                raise fiona.errors.DriverError
                         else:
                             with ZipMemoryFile(data) as zip:
-                                with zip.open(f'{file.filename[:-4]}.shp') as collection:
+                                with zip.open(f'{file_names[0][:-4]}.shp') as collection:
                                     gdf = gpd.GeoDataFrame.from_features([feature for feature in collection], crs=collection.crs)
                             gdf.sindex
                             # geom err check:
