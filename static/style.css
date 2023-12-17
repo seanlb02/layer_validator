@@ -12,9 +12,6 @@ body{
     text-align: center;
     justify-content: center;
     align-items: center;
-  
-
-    
 }
 
 table, th, td {
@@ -71,7 +68,7 @@ header{
 #text{
     width:fit-content;
     display:flex;
-    margin-top:2rem;
+    margin-top:1rem;
     font-family: 'Space Grotesk', sans-serif;
     text-align: right;
   

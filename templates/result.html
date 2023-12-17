@@ -43,13 +43,13 @@
                 </tr>
                 
                 <tr>
-                    <td>{{layer_name}}</td>
-                    <td>{{geometry}}</td>
-                    <td>{{projection}}</td>
-                    <td>{{corrupt}}</td>
-                    <td>{{attributes}}</td>
-                    <td>{{geo_err}}</td>
-                    <td>{{overlap}}</td>
+                    {% for value in result %}
+                        <tr>
+                            {% for item in value %}
+                            <td> {{ item }} </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
                    
                 </tr>
                 
