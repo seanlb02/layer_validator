@@ -132,7 +132,8 @@ def create_app(test_config=None):
                             return render_template('result.html', result = res_list, logo = full_filename, flavicon = flav)
                 
             except fiona.errors.DriverError: 
-                pass
+                flav = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGC_AGREEMENT_LOGO-01.jpg')
+                return render_template('error.html', result = res_list, logo = full_filename, flavicon = flav)
 
                    
         # if request.method == 'GET':

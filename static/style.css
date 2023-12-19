@@ -55,6 +55,12 @@ header{
     font-family: 'Space Grotesk', sans-serif;
 }
 
+#tagline2 {
+    color:red;
+    text-align:center;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
 #explainer {
     display:flex;
     width:50vw;
