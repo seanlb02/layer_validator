@@ -24,6 +24,7 @@ def create_app(test_config=None):
     Layer_folder = os.path.join('layer')
     app.config['DOWNLOAD_FOLDER'] = Layer_folder
 
+
     ALLOWED_EXTENSIONS = {'zip', 'shp', 'cpg', 'prj', '.sbn', '.shx', '.xml', '.qmd', '.qix', 'sbx', 'kmz'}
     
     TEMP = tempfile.gettempdir()
@@ -43,7 +44,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-                        #     filename = secure_filename(file.filename)
+                #     filename = secure_filename(file.filename)
                 #     # Set up a place to put the upload in temp
                 #     path = (os.path.join(app.config['TEMP_FOLDER'], filename))
                 #     # this check_zip function is messing everything up
@@ -52,13 +53,12 @@ def create_app(test_config=None):
                 #     # Create the geodataframe and set up a spatial index:
                 #     gdf = gpd.read_file(str(path))
                 #     gdf.sindex
-
-        
-
+    
     #Simple form input on webpage route
     @app.route('/', methods=['GET', 'POST'])
     def upload_file():
         full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGCLOGO.png')
+        example = os.path.join(app.config['UPLOAD_FOLDER'], 'folder.png')
         if request.method == 'POST':
             try:
                 warning = ""
@@ -93,12 +93,16 @@ def create_app(test_config=None):
                                         no_attr = ""
                                         geo_err = ""
                                         topo_err = ""
-                                         # with zip.open(f'{file_names[0][:-4]}.shp') as collection:
-                                        with zip.open(f'{shapefile}') as collection:
-                                            gdf = gpd.GeoDataFrame.from_features([feature for feature in collection], crs=collection.crs)
-                                        gdf.sindex
-                                        geometry = str(gdf.geom_type[0])
-                                        projection = gdf.crs.name
+                                        # with zip.open(f'{file_names[0][:-4]}.shp') as collection:
+                                        try:
+                                            with zip.open(f'{shapefile}') as collection:
+                                                gdf = gpd.GeoDataFrame.from_features([feature for feature in collection], crs=collection.crs)
+                                            gdf.sindex
+                                            geometry = str(gdf.geom_type[0])
+                                            projection = gdf.crs.name
+                                        except:
+                                            return render_template('corrupt.html', result = res_list, logo = full_filename, folder = example flavicon = flav)
+
                                         # geom err check:
                                         if False in gdf.is_valid.values:
                                             geom_error = "Yes"
@@ -135,7 +139,7 @@ def create_app(test_config=None):
                 
             except fiona.errors.DriverError: 
                 flav = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGC_AGREEMENT_LOGO-01.jpg')
-                return render_template('error.html', result = res_list, logo = full_filename, flavicon = flav)
+                return render_template('error.html', result = res_list, logo = full_filename, folder = example, flavicon = flav)
 
                    
         # if request.method == 'GET':
