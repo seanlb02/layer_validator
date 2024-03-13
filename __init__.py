@@ -25,7 +25,8 @@ def create_app(test_config=None):
     app.config['DOWNLOAD_FOLDER'] = Layer_folder
 
 
-    ALLOWED_EXTENSIONS = {'zip', 'shp', 'cpg', 'prj', '.sbn', '.shx', '.xml', '.qmd', '.qix', 'sbx', 'kmz'}
+    ALLOWED_EXTENSIONS = {'zip', 'shp', 'cpg', 'prj', '.sbn', '.shx', '.xml', '.qmd', '.qix', 'sbx'}
+    SHAPEFILE_COMPONENTS = {'shp', 'cpg', 'prj', '.sbn', '.shx', '.xml', '.qmd', '.qix', 'sbx'}
     
     TEMP = tempfile.gettempdir()
     app.config['TEMP_FOLDER'] = TEMP
@@ -77,7 +78,7 @@ def create_app(test_config=None):
                     # Sanitize files WITHIN the zip folder
                     for item in file_names: 
                         try:
-                            if item.rsplit('.', 1)[1].lower() not in ALLOWED_EXTENSIONS:
+                            if item.rsplit('.', 1)[1].lower() not in SHAPEFILE_COMPONENTS:
                                 raise fiona.errors.DriverError
                         except:
                                 raise fiona.errors.DriverError
