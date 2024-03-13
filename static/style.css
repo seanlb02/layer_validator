@@ -55,6 +55,10 @@ header{
     font-family: 'Space Grotesk', sans-serif;
 }
 
+#example {
+    text-align: center;
+}
+
 #tagline2 {
     color:red;
     text-align:center;
