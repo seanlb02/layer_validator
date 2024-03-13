@@ -101,6 +101,7 @@ def create_app(test_config=None):
                                             geometry = str(gdf.geom_type[0])
                                             projection = gdf.crs.name
                                         except:
+                                            flav = os.path.join(app.config['UPLOAD_FOLDER'], 'MCGC_AGREEMENT_LOGO-01.jpg')
                                             return render_template('corrupt.html', result = res_list, logo = full_filename, folder = example, flavicon = flav)
 
                                         # geom err check:
