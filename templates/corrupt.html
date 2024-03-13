@@ -32,13 +32,20 @@
     
     <div id="container">
         <div id="form-container">
-            <form id="form" action="{{ url_for('transform_file') }}" method="POST" enctype=multipart/form-data>
+            <form id="form" action="{{ url_for('upload_file') }}" method="POST" enctype=multipart/form-data>
                 <input type="file" accept="application/zip" name="data_zip_file" />
-                <button type="submit">Convert</button>
+                <button type="submit">Validate</button>
             </form>
         </div>
         <section id="explainer">
-            
+            <div id="text">What we check for:</div>
+            <ul id="list">
+                <li>File naming</li>
+                <li>Layers have attributes</li>
+                <li>Projection</li>
+                <li>Geometry errors</li>
+                <li>Topology errors</li>
+            </ul>
         </section>
     </div>
 </body>
