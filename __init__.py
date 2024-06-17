@@ -10,7 +10,7 @@ import io
 from fiona.io import ZipMemoryFile
 import fiona
 import tempfile
-from fiona.io import ZipMemoryFile
+# from fiona.io import ZipMemoryFile
 import zipfile
 import copy
 
@@ -199,4 +199,4 @@ def create_app(test_config=None):
  
 if __name__ == "__main__":
     app.run()
-  
+    
