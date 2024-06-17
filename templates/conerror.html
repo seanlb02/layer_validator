@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" type="image/x-icon" sizes="50x100" href="{{ flavicon }}">
+    <title>MCGC Spatial QA Validator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div id="hero">
+        <img src="{{ logo }}" width="500" height="100"/>
+    </div>
+    <header>
+        <section >
+            <div id="title">Spatial File Converter</div>
+        </section>
+        <section>
+            <div id="tagline2">Oops... looks like what you uploaded had something other than a kmz or gpkg in it, or was too large</div>
+            <div id="tagline">Ensure the zipfile contains the required shapefile components only</div>
+        </section>
+       
+    </header>
+    
+    <div id="container">
+        <div id="form-container">
+            <form id="form" action="{{ url_for('transform_file') }}" method="POST" enctype=multipart/form-data>
+                <input type="file" accept="application/zip" name="data_zip_file" />
+                <button type="submit">Convert</button>
+            </form>
+        </div>
+        <section id="explainer">
+            
+        </section>
+    </div>
+</body>
+</html>
